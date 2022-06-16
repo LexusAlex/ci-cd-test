@@ -1,0 +1,6 @@
+build-pull:
+	docker-compose build --pull
+up:
+	docker-compose up -d
+down:
+	docker-compose down --remove-orphans

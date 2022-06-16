@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  nginx:
+    build:
+      context: docker/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/ci-cd
+    depends_on:
+      - fpm
+
+  fpm:
+    build:
+      context: docker/fpm
+    volumes:
+      - ./:/ci-cd
+
+  cli:
+    build:
+      context: docker/cli
+    volumes:
+      - ./:/ci-cd
