@@ -38,4 +38,12 @@ jobs:
               run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
 
             - name: run test
+              id: run-test
               run: make test
+
+            -   name: Archive tests output
+                uses: actions/upload-artifact@v1
+                with:
+                    name: test-output
+                    path: cache
+                if: ${{ always() && steps.run-test.outcome == 'failure' }}
