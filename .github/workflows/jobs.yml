@@ -1,12 +1,32 @@
 name: test-jobs
-on: [push]
+on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+permissions:
+    contents: read
 jobs:
-    check-bats-version:
-        runs-on: ubuntu-latest
+    mutation:
+        name: PHP ${{ matrix.php }}-${{ matrix.os }}
+
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            matrix:
+                os:
+                    - ubuntu-latest
+
+                php:
+                    - 8.0
+                    - 8.1
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
               with:
-                  node-version: '14'
-            - run: npm install -g bats
-            - run: bats -v
+                  php-version: ${{ matrix.php }}
+                  tools: composer:v2, cs2pr
+                  coverage: none
