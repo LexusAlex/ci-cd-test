@@ -13,7 +13,7 @@ final class DummyTest extends TestCase
 {
     public function testOne(): void
     {
-        self::assertCount(4, [1, 2, 3, 4, 5]);
+        self::assertCount(5, [1, 2, 3, 4, 5]);
     }
 
     public function testTwo(): void
