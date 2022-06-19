@@ -1,4 +1,4 @@
-init: down-clear build-pull up
+init: down-clear build-pull up composer-install
 build-pull:
 	docker-compose build --pull
 up:
@@ -9,3 +9,9 @@ down-clear:
 	docker-compose down -v --remove-orphans
 composer-install:
 	docker-compose run --rm cli composer install
+test:
+	docker-compose run --rm cli composer test
+fixer:
+	docker-compose run --rm cli composer fixer
+fixer-dry-run:
+	docker-compose run --rm cli composer fixer-dry-run

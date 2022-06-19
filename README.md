@@ -13,5 +13,8 @@
 - make up - запустить контейнеры
 - make down - остановить контейнеры
 - make down-clear остановить контейнеры и удалить тома
+- make test запуск тестов
+- make fixer запуск линтера
+- make fixer-dry-run показать ошибки линтера
 - docker-compose run --rm cli composer init - установка или запуск чего либо в контейнере
 - docker-compose run --rm cli composer require --dev phpunit/phpunit - установка или запуск чего либо в контейнере

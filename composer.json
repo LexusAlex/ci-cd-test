@@ -1,12 +1,29 @@
 {
-    "name": "lexusalex/ci-cd",
+    "name": "lexusalex/ci-cd-test",
+    "authors": [
+        {
+            "name": "Alexsey Shmelev",
+            "email": "alexsey_89@bk.ru"
+        }
+    ],
     "type": "project",
     "autoload": {
         "psr-4": {
             "CiCd\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "tests/"
+        }
+    },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.8"
+    },
+    "scripts": {
+        "test": "phpunit --colors=always",
+        "fixer": "php-cs-fixer fix --allow-risky=yes --diff",
+        "fixer-dry-run": "php-cs-fixer fix --allow-risky=yes --dry-run --diff"
     }
 }
