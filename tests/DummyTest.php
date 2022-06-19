@@ -18,6 +18,6 @@ final class DummyTest extends TestCase
 
     public function testTwo(): void
     {
-        self::assertContains(6, [3, 4, 6]);
+        self::assertContains(7, [3, 4, 6]);
     }
 }
